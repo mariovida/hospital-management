@@ -71,7 +71,7 @@ const Page = () => {
   const invoice = useSelector(
     (state: RootState) => state.invoices.selectedInvoice
   );
-  console.log(invoice);
+  //console.log(invoice);
 
   useEffect(() => {
     try {
