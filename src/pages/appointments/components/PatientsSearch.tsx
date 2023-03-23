@@ -99,7 +99,7 @@ const PatientsSearch: React.FC<PatientsSearchProps> = ({
         </Box>
       </Stack>
 
-      {isSearchVisible && !hideList ? (
+      {isSearchVisible && !hideList && filteredPatients.length > 0 ? (
         <CustomList>
           {filteredPatients.map((patient) => (
             <CustomListItem
