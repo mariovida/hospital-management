@@ -42,13 +42,13 @@ const BackButton = styled(Button)({
   },
 });
 
-const MainButton = styled(Button)({
-  height: "fill",
-  padding: "15px 20px",
+const SubmitButton = styled(Button)({
+  padding: "12px 24px",
   fontSize: "14px",
   fontWeight: "500",
   lineHeight: "24px",
   textAlign: "center",
+  marginTop: "16px",
   borderRadius: "10px",
   color: customColors.info.contrastText,
   backgroundColor: customColors.green.main,
@@ -130,6 +130,9 @@ const Page = () => {
                   >
                     {selectedPatient}
                   </Typography>
+                  <Stack direction="row" justifyContent="flex-end">
+                    <SubmitButton>Make appointment</SubmitButton>
+                  </Stack>
                 </AppointmentCard>
               </Grid>
             )}
