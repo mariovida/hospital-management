@@ -81,9 +81,9 @@ const Page = () => {
 
   const handlePatientSearch = (query: string) => {};
 
-  const handlePatientSelect = (name: string) => {
+  const handlePatientSelect = (name: any, id: any) => {
     setSelectedPatient(name);
-    console.log(name);
+    console.log(id);
   };
 
   return (
