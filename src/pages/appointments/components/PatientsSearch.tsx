@@ -37,7 +37,7 @@ const CustomListItem = styled(ListItem)({
 
 interface PatientsSearchProps {
   onFiltersChange: (query: string) => void;
-  onSelectPatient: (name: string, id: number) => void;
+  onSelectPatient: (name: string, id: number, mbo: string) => void;
   patients: Patients[];
 }
 
@@ -72,11 +72,11 @@ const PatientsSearch: React.FC<PatientsSearchProps> = ({
     setHideList(false);
   };
 
-  const handlePatientClick = (name: string, id: number | any) => {
+  const handlePatientClick = (name: string, id: any, mbo: any) => {
     setQuery(name);
     setPatientId(id);
     setHideList(true);
-    onSelectPatient(name, id);
+    onSelectPatient(name, id, mbo);
   };
 
   return (
@@ -107,7 +107,8 @@ const PatientsSearch: React.FC<PatientsSearchProps> = ({
               onClick={() =>
                 handlePatientClick(
                   `${patient.first_name} ${patient.last_name}`,
-                  patient.id
+                  patient.id,
+                  patient.mbo
                 )
               }
             >

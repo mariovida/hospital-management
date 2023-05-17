@@ -42,13 +42,20 @@ const BackButton = styled(Button)({
   },
 });
 
+const AppointmentCard = styled(Card)({
+  padding: "24px",
+  marginTop: "24px",
+  borderRadius: "10px",
+  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+});
+
 const SubmitButton = styled(Button)({
   padding: "12px 24px",
   fontSize: "14px",
   fontWeight: "500",
   lineHeight: "24px",
   textAlign: "center",
-  marginTop: "16px",
+  marginTop: "24px",
   borderRadius: "10px",
   color: customColors.info.contrastText,
   backgroundColor: customColors.green.main,
@@ -58,18 +65,14 @@ const SubmitButton = styled(Button)({
   },
 });
 
-const AppointmentCard = styled(Card)({
-  padding: "16px",
-  marginTop: "24px",
-  borderRadius: "10px",
-  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-});
-
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
   const patients = useSelector((state: RootState) => state.patients.patients);
-  const [selectedPatient, setSelectedPatient] = useState("");
+  const [selectedPatient, setSelectedPatient] = useState({
+    name: "",
+    id: 0,
+    mbo: "",
+  });
 
   useEffect(() => {
     try {
@@ -81,9 +84,13 @@ const Page = () => {
 
   const handlePatientSearch = (query: string) => {};
 
-  const handlePatientSelect = (name: any, id: any) => {
-    setSelectedPatient(name);
-    console.log(id);
+  const handlePatientSelect = (name: string, id: number, mbo: string) => {
+    setSelectedPatient({
+      name: `${name}`,
+      id: id,
+      mbo: mbo,
+    });
+    console.log(mbo);
   };
 
   return (
@@ -120,16 +127,38 @@ const Page = () => {
                 patients={patients}
               />
             </Grid>
-            {selectedPatient !== "" && (
+            {selectedPatient.name !== "" && (
               <Grid xs={12}>
                 <AppointmentCard>
-                  <Typography
-                    fontFamily={"Plus Jakarta Sans"}
-                    fontSize={24}
-                    fontWeight={"bold"}
-                  >
-                    {selectedPatient}
-                  </Typography>
+                  <Stack direction="row" justifyContent="space-between">
+                    <div>
+                      <Typography
+                        fontFamily={"Plus Jakarta Sans"}
+                        fontSize={24}
+                        fontWeight={"bold"}
+                      >
+                        {selectedPatient.name}
+                      </Typography>
+                    </div>
+                    <Stack textAlign="right">
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          color: customColors.text.secondary,
+                        }}
+                      >
+                        MBO
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "18px",
+                          fontWeight: "500",
+                        }}
+                      >
+                        {selectedPatient.mbo}
+                      </Typography>
+                    </Stack>
+                  </Stack>
                   <Stack direction="row" justifyContent="flex-end">
                     <SubmitButton>Make appointment</SubmitButton>
                   </Stack>
