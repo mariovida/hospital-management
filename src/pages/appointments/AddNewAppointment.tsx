@@ -1,4 +1,6 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -7,6 +9,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
+import CustomTextField from "@src/components/text-field";
+import CustomSelectField from "@src/components/select-field";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
@@ -49,6 +53,12 @@ const AppointmentCard = styled(Card)({
   boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
 });
 
+const FormGrid = styled(Grid)({
+  flexWrap: "nowrap",
+  gap: "0 24px",
+  marginBottom: "16px",
+});
+
 const SubmitButton = styled(Button)({
   padding: "12px 24px",
   fontSize: "14px",
@@ -64,6 +74,11 @@ const SubmitButton = styled(Button)({
     backgroundColor: customColors.green.dark,
   },
 });
+
+interface AddAppointmentFormValues {
+  type: string;
+  status: string;
+}
 
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -90,8 +105,45 @@ const Page = () => {
       id: id,
       mbo: mbo,
     });
-    console.log(mbo);
   };
+
+  const validationSchema = Yup.object({
+    type: Yup.string().required("Required field"),
+    status: Yup.string().required("Required field"),
+  });
+
+  const formik = useFormik<AddAppointmentFormValues>({
+    initialValues: {
+      type: "",
+      status: "",
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      const errors = await formik.validateForm();
+      if (Object.keys(errors).length === 0) {
+        console.log("success");
+      }
+    },
+  });
+
+  const typeOptions = [
+    { label: "Anesthesiology", value: "Anesthesiology" },
+    { label: "Cardiology", value: "Cardiology" },
+    { label: "Dermatology", value: "Dermatology" },
+    { label: "Family medicine", value: "Family medicine" },
+    { label: "Gastroenterology", value: "Gastroenterology" },
+    { label: "Oncology", value: "Oncology" },
+    { label: "Ophthalmology", value: "Ophthalmology" },
+    { label: "Otolaryngology", value: "Otolaryngology" },
+    { label: "Pediatrics", value: "Pediatrics" },
+    { label: "Radiology", value: "Radiology" },
+    { label: "Urology", value: "Urology" },
+  ];
+
+  const statusOptions = [
+    { label: "Waiting", value: "waiting" },
+    { label: "In progress", value: "progress" },
+  ];
 
   return (
     <>
@@ -159,9 +211,31 @@ const Page = () => {
                       </Typography>
                     </Stack>
                   </Stack>
-                  <Stack direction="row" justifyContent="flex-end">
-                    <SubmitButton>Make appointment</SubmitButton>
-                  </Stack>
+                  <form>
+                    <FormGrid container sx={{ marginTop: "24px" }}>
+                      <Grid xs={6}>
+                        <CustomSelectField
+                          formik={formik}
+                          name="type"
+                          label="Type"
+                          options={typeOptions}
+                          defaultOptionLabel="Type"
+                        />
+                      </Grid>
+                      <Grid xs={6}>
+                        <CustomSelectField
+                          formik={formik}
+                          name="status"
+                          label="Status"
+                          options={statusOptions}
+                          defaultOptionLabel="Status"
+                        />
+                      </Grid>
+                    </FormGrid>
+                    <Stack direction="row" justifyContent="flex-end">
+                      <SubmitButton>Make appointment</SubmitButton>
+                    </Stack>
+                  </form>
                 </AppointmentCard>
               </Grid>
             )}
