@@ -20,6 +20,7 @@ import { Seo } from "@src/components/seo";
 import { paths } from "@src/paths";
 import PatientsSearch from "@src/pages/appointments/components/PatientsSearch";
 import { fetchPatients } from "@src/store/slices/patientsSlice";
+import { addNewAppointment } from "@src/store/slices/appointmentsSlice";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
@@ -69,9 +70,11 @@ const SubmitButton = styled(Button)({
   borderRadius: "10px",
   color: customColors.info.contrastText,
   backgroundColor: customColors.green.main,
+  boxShadow: "none",
 
   "&:hover": {
     backgroundColor: customColors.green.dark,
+    boxShadow: "none",
   },
 });
 
@@ -121,7 +124,16 @@ const Page = () => {
     onSubmit: async (values) => {
       const errors = await formik.validateForm();
       if (Object.keys(errors).length === 0) {
-        console.log("success");
+        try {
+          await dispatch(
+            addNewAppointment({
+              appointmentData: values,
+              id: selectedPatient.id,
+            })
+          );
+        } catch (error) {
+          console.error("Failed", error);
+        }
       }
     },
   });
@@ -211,7 +223,7 @@ const Page = () => {
                       </Typography>
                     </Stack>
                   </Stack>
-                  <form>
+                  <form onSubmit={formik.handleSubmit}>
                     <FormGrid container sx={{ marginTop: "24px" }}>
                       <Grid xs={6}>
                         <CustomSelectField
@@ -233,7 +245,9 @@ const Page = () => {
                       </Grid>
                     </FormGrid>
                     <Stack direction="row" justifyContent="flex-end">
-                      <SubmitButton>Make appointment</SubmitButton>
+                      <SubmitButton type="submit" variant="contained">
+                        Make appointment
+                      </SubmitButton>
                     </Stack>
                   </form>
                 </AppointmentCard>
