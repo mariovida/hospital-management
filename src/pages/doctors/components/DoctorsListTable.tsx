@@ -14,7 +14,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
 import { MoreMenu } from "@src/pages/doctors/components/DoctorsMoreMenu";
 
 import styled from "@emotion/styled";

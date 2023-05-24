@@ -57,7 +57,7 @@ const Page = () => {
 
   return (
     <>
-      <Seo title="" />
+      <Seo title="Doctors" />
       <Box component="main" paddingTop="42px" flexGrow="1">
         <Container maxWidth="xl">
           <Grid container>
@@ -73,16 +73,22 @@ const Page = () => {
               </Stack>
             </Grid>
             <Grid xs={12}>
-              <DoctorsListSearch onFiltersChange={handleFiltersChange} />
-              <DoctorsListTable
-                count={doctors.length}
-                items={doctors}
-                onPageChange={handlePageChange}
-                onRowsPerPageChange={handleRowsPerPageChange}
-                page={page}
-                rowsPerPage={rowsPerPage}
-                filters={state.filters}
-              />
+              {doctors ? (
+                <>
+                  <DoctorsListSearch onFiltersChange={handleFiltersChange} />
+                  <DoctorsListTable
+                    count={doctors.length}
+                    items={doctors}
+                    onPageChange={handlePageChange}
+                    onRowsPerPageChange={handleRowsPerPageChange}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    filters={state.filters}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
             </Grid>
           </Grid>
         </Container>
