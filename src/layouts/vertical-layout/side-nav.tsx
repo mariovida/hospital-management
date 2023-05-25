@@ -220,6 +220,9 @@ export const SideNav: FC<SideNavProps> = (props) => {
           borderRightWidth: 1,
           color: "var(--nav-color)",
           width: SIDE_NAV_WIDTH,
+          ".simplebar-placeholder": {
+            display: "none",
+          },
         },
       }}
       variant="permanent"
