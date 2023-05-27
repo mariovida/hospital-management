@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AppDispatch, RootState } from "@src/store/store";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -13,7 +14,8 @@ import ArrowLeft from "@src/icons/arrow-left";
 
 import { Seo } from "@src/components/seo";
 import { paths } from "@src/paths";
-import { fetchInvoices } from "@src/store/slices/invoicesSlice";
+import PatientsSearch from "@src/pages/appointments/components/PatientsSearch";
+import { fetchPatients } from "@src/store/slices/patientsSlice";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
@@ -56,37 +58,32 @@ const MainButton = styled(Button)({
   },
 });
 
+const AppointmentCard = styled(Card)({
+  padding: "16px",
+  marginTop: "24px",
+  borderRadius: "10px",
+  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+});
+
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const invoices = useSelector((state: RootState) => state.invoices.invoices);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const patients = useSelector((state: RootState) => state.patients.patients);
+  const [selectedPatient, setSelectedPatient] = useState("");
 
   useEffect(() => {
     try {
-      dispatch(fetchInvoices());
+      dispatch(fetchPatients());
     } catch (error) {
       console.error("Error getting statistics:", error);
     }
   }, [dispatch]);
 
-  const handlePageChange = useCallback((event: any, value: any) => {
-    setPage(value);
-  }, []);
+  const handlePatientSearch = (query: string) => {};
 
-  const handleRowsPerPageChange = useCallback((event: any) => {
-    setRowsPerPage(event.target.value);
-  }, []);
-
-  const [state, setState] = useState({
-    filters: {
-      query: "",
-    },
-  });
-
-  const addNewRecord = () => {
-    navigate("/invoices/add-new");
+  const handlePatientSelect = (name: string) => {
+    setSelectedPatient(name);
+    console.log(name);
   };
 
   return (
@@ -116,7 +113,26 @@ const Page = () => {
                 </div>
               </Stack>
             </Grid>
-            <Grid xs={12}></Grid>
+            <Grid xs={12}>
+              <PatientsSearch
+                onFiltersChange={handlePatientSearch}
+                onSelectPatient={handlePatientSelect}
+                patients={patients}
+              />
+            </Grid>
+            {selectedPatient !== "" && (
+              <Grid xs={12}>
+                <AppointmentCard>
+                  <Typography
+                    fontFamily={"Plus Jakarta Sans"}
+                    fontSize={24}
+                    fontWeight={"bold"}
+                  >
+                    {selectedPatient}
+                  </Typography>
+                </AppointmentCard>
+              </Grid>
+            )}
           </Grid>
         </Container>
       </Box>
