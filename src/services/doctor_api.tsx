@@ -14,4 +14,12 @@ export const api = {
       body: JSON.stringify(doctorData),
     });
   },
+  changeDoctorStatus: async (
+    id: string | number,
+    status: string
+  ): Promise<any> => {
+    return fetchWithToken(
+      `http://localhost:3000/doctors/change-status/${id}?status=${status}`
+    );
+  },
 };

@@ -30,6 +30,13 @@ export const addNewDoctor = createAsyncThunk(
   }
 );
 
+export const changeDoctorStatus = createAsyncThunk(
+  "doctors/changeDoctorStatus",
+  async ({ id, status }: { id: string | number; status: string | any }) => {
+    return await api.changeDoctorStatus(id, status);
+  }
+);
+
 const doctorsSlice = createSlice({
   name: "doctors",
   initialState,
@@ -48,6 +55,13 @@ const doctorsSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(addNewDoctor.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "An error occurred";
+      })
+      .addCase(changeDoctorStatus.fulfilled, (state, action) => {
+        state.status = "succeeded";
+      })
+      .addCase(changeDoctorStatus.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "An error occurred";
       });

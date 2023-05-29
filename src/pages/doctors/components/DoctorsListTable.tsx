@@ -76,41 +76,48 @@ export const DoctorsListTable = (props: any) => {
               <TableCell width={40}></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {items
-              .filter((doctor: any) => {
-                const queryLowerCase = filters.query.toLowerCase();
-                return (
-                  doctor.first_name.toLowerCase().includes(queryLowerCase) ||
-                  doctor.last_name.toLowerCase().includes(queryLowerCase)
-                );
-              })
-              .map((doctor: any) => (
-                <TableRow hover key={doctor.id}>
-                  <TableCell>{doctor.first_name}</TableCell>
-                  <TableCell>{doctor.last_name}</TableCell>
-                  <TableCell>
-                    {doctor.gender === "M" ? "Male" : "Female"}
-                  </TableCell>
-                  <TableCell>{doctor.date_of_birth}</TableCell>
-                  <TableCell>{doctor.type}</TableCell>
-                  <TableCell align="right">
-                    {doctor.is_active === 1 ? (
-                      <StatusBadge>
-                        <span className="status-working">WORKING</span>
-                      </StatusBadge>
-                    ) : (
-                      <StatusBadge>
-                        <span className="status-holiday">HOLIDAY</span>
-                      </StatusBadge>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    <MoreMenu doctor_id={doctor.id} status={doctor.is_active} />
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
+          {items ? (
+            <TableBody>
+              {items
+                .filter((doctor: any) => {
+                  const queryLowerCase = filters.query.toLowerCase();
+                  return (
+                    doctor.first_name.toLowerCase().includes(queryLowerCase) ||
+                    doctor.last_name.toLowerCase().includes(queryLowerCase)
+                  );
+                })
+                .map((doctor: any) => (
+                  <TableRow hover key={doctor.id}>
+                    <TableCell>{doctor.first_name}</TableCell>
+                    <TableCell>{doctor.last_name}</TableCell>
+                    <TableCell>
+                      {doctor.gender === "M" ? "Male" : "Female"}
+                    </TableCell>
+                    <TableCell>{doctor.date_of_birth}</TableCell>
+                    <TableCell>{doctor.type}</TableCell>
+                    <TableCell align="right">
+                      {doctor.is_active === 1 ? (
+                        <StatusBadge>
+                          <span className="status-working">WORKING</span>
+                        </StatusBadge>
+                      ) : (
+                        <StatusBadge>
+                          <span className="status-holiday">HOLIDAY</span>
+                        </StatusBadge>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <MoreMenu
+                        doctor_id={doctor.id}
+                        status={doctor.is_active}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          ) : (
+            <></>
+          )}
         </Table>
       </Box>
       <TablePagination

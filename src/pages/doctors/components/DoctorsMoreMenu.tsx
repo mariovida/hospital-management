@@ -10,9 +10,9 @@ import SvgIcon from "@mui/material/SvgIcon";
 
 import { usePopover } from "@src/hooks/use-popover";
 import { useAppDispatch } from "@src/hooks/use-dispatch";
+import { changeDoctorStatus } from "@src/store/slices/doctorsSlice";
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
-import Typography from "@mui/material/Typography";
 
 const SvgDotsButton = styled(IconButton)({
   padding: "0",
@@ -35,6 +35,15 @@ export const MoreMenu: FC<{ doctor_id: any; status: any }> = (props) => {
   const { doctor_id, status } = props;
   const popover = usePopover<HTMLButtonElement>();
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
+
+  const handleChangeDoctorStatus = async () => {
+    try {
+      await dispatch(changeDoctorStatus({ id: doctor_id, status: status }));
+      window.location.reload();
+    } catch (error) {
+      console.error("Error changing status:", error);
+    }
+  };
 
   return (
     <>
@@ -68,8 +77,8 @@ export const MoreMenu: FC<{ doctor_id: any; status: any }> = (props) => {
           vertical: "top",
         }}
       >
-        <CustomMenuItem style={{ color: customColors.error.main }}>
-          <ListItemText primary="Close registrations" />
+        <CustomMenuItem onClick={() => handleChangeDoctorStatus()}>
+          <ListItemText primary="Change status" />
         </CustomMenuItem>
       </Menu>
     </>
