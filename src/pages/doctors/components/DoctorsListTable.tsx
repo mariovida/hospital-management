@@ -73,7 +73,7 @@ export const DoctorsListTable = (props: any) => {
               <TableCell width={200}>Date of birth</TableCell>
               <TableCell>Type</TableCell>
               <TableCell align="right">Status</TableCell>
-              <TableCell width={60}></TableCell>
+              <TableCell width={40}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
