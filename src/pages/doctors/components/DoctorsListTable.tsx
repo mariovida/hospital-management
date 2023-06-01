@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
+import { MoreMenu } from "@src/pages/doctors/components/DoctorsMoreMenu";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
@@ -52,6 +53,7 @@ export const DoctorsListTable = (props: any) => {
     rowsPerPage = 0,
     filters,
   } = props;
+  console.log(items);
 
   return (
     <Card
@@ -71,6 +73,7 @@ export const DoctorsListTable = (props: any) => {
               <TableCell width={200}>Date of birth</TableCell>
               <TableCell>Type</TableCell>
               <TableCell align="right">Status</TableCell>
+              <TableCell width={60}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -101,6 +104,9 @@ export const DoctorsListTable = (props: any) => {
                         <span className="status-holiday">HOLIDAY</span>
                       </StatusBadge>
                     )}
+                  </TableCell>
+                  <TableCell>
+                    <MoreMenu doctor_id={doctor.id} status={doctor.is_active} />
                   </TableCell>
                 </TableRow>
               ))}
