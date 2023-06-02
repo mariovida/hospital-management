@@ -96,7 +96,7 @@ export const DoctorsListTable = (props: any) => {
                     <TableCell>{doctor.date_of_birth}</TableCell>
                     <TableCell>{doctor.type}</TableCell>
                     <TableCell align="right">
-                      {doctor.is_active === 1 ? (
+                      {doctor.status === "working" ? (
                         <StatusBadge>
                           <span className="status-working">WORKING</span>
                         </StatusBadge>
@@ -107,10 +107,7 @@ export const DoctorsListTable = (props: any) => {
                       )}
                     </TableCell>
                     <TableCell>
-                      <MoreMenu
-                        doctor_id={doctor.id}
-                        status={doctor.is_active}
-                      />
+                      <MoreMenu doctor_id={doctor.id} status={doctor.status} />
                     </TableCell>
                   </TableRow>
                 ))}

@@ -6,5 +6,5 @@ export type Doctors = {
   date_of_birth?: string;
   type?: string;
   created_at?: string;
-  is_active?: number;
+  status?: string;
 };
