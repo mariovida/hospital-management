@@ -9,6 +9,7 @@ import PatientsIcon from "@src/icons/patients";
 import DoctorsIcon from "@src/icons/doctors";
 import RecordsIcon from "@src/icons/records";
 import InvoicesIcon from "@src/icons/invoices";
+import AppointmentsIcon from "@src/icons/appointment";
 
 export interface Item {
   disabled?: boolean;
@@ -76,18 +77,27 @@ export const useSections = () => {
             ],
           },
           {
-            title: "Records",
+            title: "Appointments",
             icon: (
               <SvgIcon fontSize="small">
-                <RecordsIcon />
+                <AppointmentsIcon />
               </SvgIcon>
             ),
             items: [
               {
                 title: "View all",
-                path: paths.records,
+                path: paths.appointments,
               },
             ],
+          },
+          {
+            title: "Records",
+            path: paths.records,
+            icon: (
+              <SvgIcon fontSize="small">
+                <RecordsIcon />
+              </SvgIcon>
+            ),
           },
           {
             title: "Invoices",

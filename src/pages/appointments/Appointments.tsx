@@ -69,7 +69,7 @@ const Page = () => {
 
   return (
     <>
-      <Seo title="Records" />
+      <Seo title="Appointments" />
       <Box component="main" paddingTop="42px" flexGrow="1">
         <Container maxWidth="xl">
           <Grid container>
@@ -81,7 +81,7 @@ const Page = () => {
               >
                 <div>
                   <Typography variant="h4" lineHeight={1.7}>
-                    Records
+                    Appointments
                   </Typography>
                 </div>
                 <div>
