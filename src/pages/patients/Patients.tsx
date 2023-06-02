@@ -54,7 +54,7 @@ const Page = () => {
 
   return (
     <>
-      <Seo title="" />
+      <Seo title="Patients" />
       <Box component="main" paddingTop="42px" flexGrow="1">
         <Container maxWidth="xl">
           <Grid container>

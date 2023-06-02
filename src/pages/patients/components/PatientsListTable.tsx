@@ -73,42 +73,46 @@ export const PatientsListTable = (props: any) => {
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {items
-              .slice(startIndex, endIndex)
-              .filter((patient: any) => {
-                const queryLowerCase = filters.query.toLowerCase();
-                return (
-                  patient.oib.toLowerCase().includes(queryLowerCase) ||
-                  patient.first_name.toLowerCase().includes(queryLowerCase) ||
-                  patient.last_name.toLowerCase().includes(queryLowerCase) ||
-                  patient.email.toLowerCase().includes(queryLowerCase)
-                );
-              })
-              .map((patient: any) => (
-                <TableRow hover key={patient.id}>
-                  <TableCell>{patient.first_name}</TableCell>
-                  <TableCell>{patient.last_name}</TableCell>
-                  <TableCell>
-                    {patient.gender === "M" ? "Male" : "Female"}
-                  </TableCell>
-                  <TableCell>{patient.date_of_birth}</TableCell>
-                  <TableCell>{patient.email}</TableCell>
-                  <TableCell>{patient.phone_number}</TableCell>
-                  <TableCell>{patient.mbo}</TableCell>
-                  <TableCell>{patient.oib}</TableCell>
-                  <TableCell>
-                    <DetailsButton
-                      onClick={() => openDetailsModalHandler(patient)}
-                    >
-                      <SvgIcon>
-                        <ArrowRightIcon />
-                      </SvgIcon>
-                    </DetailsButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
+          {items ? (
+            <TableBody>
+              {items
+                .slice(startIndex, endIndex)
+                .filter((patient: any) => {
+                  const queryLowerCase = filters.query.toLowerCase();
+                  return (
+                    patient.oib.toLowerCase().includes(queryLowerCase) ||
+                    patient.first_name.toLowerCase().includes(queryLowerCase) ||
+                    patient.last_name.toLowerCase().includes(queryLowerCase) ||
+                    patient.email.toLowerCase().includes(queryLowerCase)
+                  );
+                })
+                .map((patient: any) => (
+                  <TableRow hover key={patient.id}>
+                    <TableCell>{patient.first_name}</TableCell>
+                    <TableCell>{patient.last_name}</TableCell>
+                    <TableCell>
+                      {patient.gender === "M" ? "Male" : "Female"}
+                    </TableCell>
+                    <TableCell>{patient.date_of_birth}</TableCell>
+                    <TableCell>{patient.email}</TableCell>
+                    <TableCell>{patient.phone_number}</TableCell>
+                    <TableCell>{patient.mbo}</TableCell>
+                    <TableCell>{patient.oib}</TableCell>
+                    <TableCell>
+                      <DetailsButton
+                        onClick={() => openDetailsModalHandler(patient)}
+                      >
+                        <SvgIcon>
+                          <ArrowRightIcon />
+                        </SvgIcon>
+                      </DetailsButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          ) : (
+            <></>
+          )}
         </Table>
       </Box>
       <PatientDetailsModal
