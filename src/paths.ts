@@ -11,5 +11,6 @@ export const paths = {
   addNewInvoice: "/invoices/add-new",
   invoiceDetails: "/invoice/:id",
   appointments: "/appointments",
+  addNewAppointment: "/appointments/add-new",
   records: "/records",
 };

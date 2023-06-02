@@ -88,6 +88,10 @@ export const useSections = () => {
                 title: "View all",
                 path: paths.appointments,
               },
+              {
+                title: "Add new",
+                path: paths.addNewAppointment,
+              },
             ],
           },
           {

@@ -16,6 +16,7 @@ import InvoicesPage from "@src/pages/invoices/Invoices";
 import AddNewInvoicePage from "@src/pages/invoices/AddNewInvoice";
 import InvoiceDetailsPage from "@src/pages/invoices/InvoiceDetails";
 import AppointmentsPage from "@src/pages/appointments/Appointments";
+import AddNewAppointmentPage from "@src/pages/appointments/AddNewAppointment";
 import RecordsPage from "@src/pages/records/Records";
 
 import NewClientPage from "@src/pages/create-user";
@@ -99,6 +100,10 @@ export const routes: RouteObject[] = [
       {
         path: "/appointments",
         element: <AppointmentsPage />,
+      },
+      {
+        path: "/appointments/add-new",
+        element: <AddNewAppointmentPage />,
       },
       {
         path: "/records",

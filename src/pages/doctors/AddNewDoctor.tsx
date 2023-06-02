@@ -160,7 +160,7 @@ const Page = () => {
             <Grid xs={12}>
               <TitleStack direction="row" justifyContent="space-between">
                 <div>
-                  <Typography variant="h4">Add new</Typography>
+                  <Typography variant="h4">Add new doctor</Typography>
                 </div>
               </TitleStack>
             </Grid>
