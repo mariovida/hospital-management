@@ -53,7 +53,6 @@ export const DoctorsListTable = (props: any) => {
     rowsPerPage = 0,
     filters,
   } = props;
-  console.log(items);
 
   return (
     <Card

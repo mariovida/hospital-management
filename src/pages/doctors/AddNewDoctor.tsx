@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Box from "@mui/material/Box";
@@ -11,15 +12,38 @@ import CustomSelectField from "@src/components/select-field";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import ArrowLeft from "@src/icons/arrow-left";
 
 import SuccessModal from "@src/components/modal";
+import { paths } from "@src/paths";
 import { Seo } from "@src/components/seo";
 import { useAppDispatch } from "@src/hooks/use-dispatch";
 import { addNewDoctor } from "@src/store/slices/doctorsSlice";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
+
+const BackButton = styled(Button)({
+  minWidth: "unset",
+  padding: "0",
+  marginBottom: "32px",
+
+  "& svg": {
+    width: "20px",
+    height: "20px",
+    marginTop: "4px",
+    marginRight: "8px",
+  },
+
+  "& a": {
+    display: "inline-flex",
+    alignItem: "center",
+    fontSize: "16px",
+    fontWeight: "600",
+    textDecoration: "none",
+    color: customColors.text.primary,
+  },
+});
 
 const TitleStack = styled(Stack)({
   marginBottom: "40px",
@@ -125,6 +149,14 @@ const Page = () => {
       <Box component="main" paddingTop="42px" flexGrow="1">
         <Container maxWidth="xl">
           <Grid container>
+            <Grid xs={12}>
+              <BackButton>
+                <Box component={Link} to={paths.doctors}>
+                  <ArrowLeft />
+                  Doctors
+                </Box>
+              </BackButton>
+            </Grid>
             <Grid xs={12}>
               <TitleStack direction="row" justifyContent="space-between">
                 <div>
