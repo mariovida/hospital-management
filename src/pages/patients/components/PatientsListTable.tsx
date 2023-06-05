@@ -73,9 +73,13 @@ export const PatientsListTable = (props: any) => {
           <TableBody>
             {items
               .filter((patient: any) => {
-                return patient.oib
-                  .toLowerCase()
-                  .includes(filters.query.toLowerCase());
+                const queryLowerCase = filters.query.toLowerCase();
+                return (
+                  patient.oib.toLowerCase().includes(queryLowerCase) ||
+                  patient.first_name.toLowerCase().includes(queryLowerCase) ||
+                  patient.last_name.toLowerCase().includes(queryLowerCase) ||
+                  patient.email.toLowerCase().includes(queryLowerCase)
+                );
               })
               .map((patient: any) => (
                 <TableRow hover key={patient.id}>
