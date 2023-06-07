@@ -106,10 +106,14 @@ const Page = () => {
   ];
 
   const typeOptions = [
+    { label: "Anesthesiology", value: "Anesthesiology" },
     { label: "Cardiology", value: "Cardiology" },
     { label: "Dermatology", value: "Dermatology" },
     { label: "Family medicine", value: "Family medicine" },
+    { label: "Gastroenterology", value: "Gastroenterology" },
+    { label: "Oncology", value: "Oncology" },
     { label: "Ophthalmology", value: "Ophthalmology" },
+    { label: "Otolaryngology", value: "Otolaryngology" },
     { label: "Pediatrics", value: "Pediatrics" },
     { label: "Radiology", value: "Radiology" },
     { label: "Urology", value: "Urology" },

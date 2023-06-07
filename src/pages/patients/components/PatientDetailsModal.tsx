@@ -75,9 +75,14 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  /*const viewPatientInvoices = () => {
+    navigate("/patient/" + patient?.patient_key);
+  };*/
+
   const viewPatientRecords = () => {
     navigate("/patient/" + patient?.patient_key);
   };
+
   return (
     <>
       <Modal
@@ -97,7 +102,6 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
               <Typography variant="h4" sx={{ color: customColors.green.main }}>
                 Patient details
               </Typography>
-              <MainButton onClick={viewPatientRecords}>RECORDS</MainButton>
             </Stack>
             <Stack sx={{ marginBottom: "24px" }}>
               Patient since: {formatDateWithClock(patient?.created_at)}
@@ -222,7 +226,7 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
-            <FormGrid container sx={{ marginBottom: "0 !important" }}>
+            <FormGrid container>
               <Grid xs={12} md={6}>
                 <TextField
                   label="City"
@@ -242,6 +246,25 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                     readOnly: true,
                   }}
                 />
+              </Grid>
+            </FormGrid>
+            <FormGrid
+              container
+              sx={{ marginTop: "16px", marginBottom: "0 !important" }}
+            >
+              <Grid xs={12}>
+                <Stack
+                  direction="row"
+                  justifyContent="flex-end"
+                  alignItems="center"
+                  gap="16px"
+                  sx={{ marginBottom: "8px" }}
+                >
+                  {/*<MainButton onClick={viewPatientInvoices}>
+                    INVOICES
+                </MainButton>*/}
+                  <MainButton onClick={viewPatientRecords}>RECORDS</MainButton>
+                </Stack>
               </Grid>
             </FormGrid>
           </Stack>
