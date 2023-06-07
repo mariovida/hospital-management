@@ -12,12 +12,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 
 import SuccessModal from "@src/components/modal";
 import { Seo } from "@src/components/seo";
 import { useAppDispatch } from "@src/hooks/use-dispatch";
-import { addNewPatient } from "@src/store/slices/patientsSlice";
+import { addNewDoctor } from "@src/store/slices/doctorsSlice";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
@@ -50,19 +49,12 @@ const SubmitButton = styled(Button)({
   },
 });
 
-interface AddPatientFormValues {
+interface AddDoctorFormValues {
   first_name: string;
   last_name: string;
   gender: string;
   date_of_birth: string;
-  oib: string;
-  mbo: string;
-  address: string;
-  city: string;
-  country: string;
-  email: string;
-  phone_number: string;
-  subscribed: boolean;
+  type: string;
 }
 
 const Page = () => {
@@ -79,31 +71,22 @@ const Page = () => {
     gender: Yup.string(),
     date_of_birth: Yup.string(),
     type: Yup.string().required("Required field"),
-    username: Yup.string().required("Required field"),
-    password: Yup.string().required("Required field"),
   });
 
-  const formik = useFormik<AddPatientFormValues>({
+  const formik = useFormik<AddDoctorFormValues>({
     initialValues: {
       first_name: "",
       last_name: "",
       gender: "",
       date_of_birth: "",
-      oib: "",
-      mbo: "",
-      address: "",
-      city: "",
-      country: "",
-      email: "",
-      phone_number: "",
-      subscribed: false,
+      type: "",
     },
     validationSchema,
     onSubmit: async (values) => {
       const errors = await formik.validateForm();
       if (Object.keys(errors).length === 0) {
         try {
-          await dispatch(addNewPatient(values));
+          await dispatch(addNewDoctor(values));
           setOpenModal(true);
         } catch (error) {
           console.error("Failed", error);
@@ -123,13 +106,13 @@ const Page = () => {
   ];
 
   const typeOptions = [
-    { label: "Croatia", value: "Croatia" },
-    { label: "Bosnia and Herzegovina", value: "BiH" },
-    { label: "Slovenia", value: "Slovenija" },
-    { label: "Srbija", value: "Slovenia" },
-    { label: "Hungary", value: "Hungary" },
-    { label: "Austria", value: "Austria" },
-    { label: "Germany", value: "Germany" },
+    { label: "Cardiology", value: "Cardiology" },
+    { label: "Dermatology", value: "Dermatology" },
+    { label: "Family medicine", value: "Family medicine" },
+    { label: "Ophthalmology", value: "Ophthalmology" },
+    { label: "Pediatrics", value: "Pediatrics" },
+    { label: "Radiology", value: "Radiology" },
+    { label: "Urology", value: "Urology" },
   ];
 
   return (
@@ -200,31 +183,6 @@ const Page = () => {
                           label="Type"
                           options={typeOptions}
                           defaultOptionLabel="Type"
-                          required={true}
-                        />
-                      </Grid>
-                    </FormGrid>
-                    <Typography
-                      variant="h5"
-                      sx={{ marginTop: "32px", marginBottom: "24px" }}
-                    >
-                      Doctor sign-in information
-                    </Typography>
-                    <FormGrid container sx={{ gap: "0px !important" }}>
-                      <Grid xs={12} md={6} sx={{ paddingRight: "16px" }}>
-                        <CustomTextField
-                          formik={formik}
-                          name="username"
-                          label="Username"
-                          required={true}
-                        />
-                      </Grid>
-                      <Grid xs={12} md={6}>
-                        <CustomTextField
-                          formik={formik}
-                          name="password"
-                          label="Password"
-                          required={true}
                         />
                       </Grid>
                     </FormGrid>
