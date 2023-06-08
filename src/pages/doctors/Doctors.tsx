@@ -12,20 +12,20 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
 
 import { Seo } from "@src/components/seo";
-import { PatientsListTable } from "@src/pages/patients/components/PatientsListTable";
+import { DoctorsListTable } from "@src/pages/doctors/components/DoctorsListTable";
 import { PatientsListSearch } from "@src/pages/patients/components/PatientsListSearch";
 import { applyPagination } from "@src/utils/apply-pagination";
-import { fetchPatients } from "@src/store/slices/patientsSlice";
+import { fetchDoctors } from "@src/store/slices/doctorsSlice";
 
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
-  const patients = useSelector((state: RootState) => state.patients.patients);
+  const doctors = useSelector((state: RootState) => state.doctors.doctors);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     try {
-      dispatch(fetchPatients());
+      dispatch(fetchDoctors());
     } catch (error) {
       console.error("Error getting statistics:", error);
     }
@@ -74,9 +74,9 @@ const Page = () => {
             </Grid>
             <Grid xs={12}>
               <PatientsListSearch onFiltersChange={handleFiltersChange} />
-              <PatientsListTable
-                count={patients.length}
-                items={patients}
+              <DoctorsListTable
+                count={doctors.length}
+                items={doctors}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleRowsPerPageChange}
                 page={page}

@@ -16,6 +16,13 @@ const initialState: DoctorState = {
   error: null,
 };
 
+export const fetchDoctors = createAsyncThunk(
+  "doctors/fetchDoctors",
+  async () => {
+    return await api.getDoctors();
+  }
+);
+
 export const addNewDoctor = createAsyncThunk(
   "doctors/addNewDoctor",
   async (doctorData: Doctors) => {
@@ -29,6 +36,14 @@ const doctorsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchDoctors.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.doctors = action.payload;
+      })
+      .addCase(fetchDoctors.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "An error occurred";
+      })
       .addCase(addNewDoctor.fulfilled, (state, action) => {
         state.status = "succeeded";
       })
