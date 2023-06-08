@@ -13,7 +13,7 @@ import Grid from "@mui/system/Unstable_Grid";
 
 import { Seo } from "@src/components/seo";
 import { DoctorsListTable } from "@src/pages/doctors/components/DoctorsListTable";
-import { PatientsListSearch } from "@src/pages/patients/components/PatientsListSearch";
+import { DoctorsListSearch } from "@src/pages/doctors/components/DoctorsListSearch";
 import { applyPagination } from "@src/utils/apply-pagination";
 import { fetchDoctors } from "@src/store/slices/doctorsSlice";
 
@@ -73,7 +73,7 @@ const Page = () => {
               </Stack>
             </Grid>
             <Grid xs={12}>
-              <PatientsListSearch onFiltersChange={handleFiltersChange} />
+              <DoctorsListSearch onFiltersChange={handleFiltersChange} />
               <DoctorsListTable
                 count={doctors.length}
                 items={doctors}
