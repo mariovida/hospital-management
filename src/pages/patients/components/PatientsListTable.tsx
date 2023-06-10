@@ -47,6 +47,9 @@ export const PatientsListTable = (props: any) => {
     setOpenDetailsModal(true);
   };
 
+  const startIndex = page * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+
   return (
     <Card
       sx={{
@@ -72,6 +75,7 @@ export const PatientsListTable = (props: any) => {
           </TableHead>
           <TableBody>
             {items
+              .slice(startIndex, endIndex)
               .filter((patient: any) => {
                 const queryLowerCase = filters.query.toLowerCase();
                 return (
