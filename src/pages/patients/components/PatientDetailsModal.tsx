@@ -168,9 +168,16 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
-            <FormGrid>
-              <Divider />
-            </FormGrid>
+            <Typography
+              variant="h5"
+              sx={{
+                color: customColors.green.main,
+                marginTop: "16px",
+                marginBottom: "16px",
+              }}
+            >
+              Contact
+            </Typography>
             <FormGrid container>
               <Grid xs={12} md={6}>
                 <TextField
@@ -193,9 +200,16 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
-            <FormGrid>
-              <Divider />
-            </FormGrid>
+            <Typography
+              variant="h5"
+              sx={{
+                color: customColors.green.main,
+                marginTop: "16px",
+                marginBottom: "16px",
+              }}
+            >
+              Address
+            </Typography>
             <FormGrid container>
               <Grid xs={12}>
                 <TextField

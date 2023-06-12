@@ -56,7 +56,7 @@ export const createComponents = (): Components => {
       styleOverrides: {
         root: {
           borderBottomWidth: "medium",
-          borderColor: customColors.green.light,
+          borderColor: customColors.green.main,
         },
       },
     },
