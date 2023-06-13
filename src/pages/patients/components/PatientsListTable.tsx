@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   Stack,
+  SvgIcon,
   Table,
   TableBody,
   TableCell,
@@ -12,7 +13,7 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import DetailsIcon from "@src/icons/details";
+import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
 import PatientDetailsModal from "./PatientDetailsModal";
 
 import styled from "@emotion/styled";
@@ -25,6 +26,7 @@ const DetailsButton = styled(Button)({
   minWidth: "unset",
   width: "20px",
   padding: "0",
+  color: customColors.green.main,
 });
 
 export const PatientsListTable = (props: any) => {
@@ -91,7 +93,9 @@ export const PatientsListTable = (props: any) => {
                     <DetailsButton
                       onClick={() => openDetailsModalHandler(patient)}
                     >
-                      <DetailsIcon />
+                      <SvgIcon>
+                        <ArrowRightIcon />
+                      </SvgIcon>
                     </DetailsButton>
                   </TableCell>
                 </TableRow>

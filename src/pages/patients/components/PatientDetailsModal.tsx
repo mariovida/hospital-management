@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -15,6 +17,7 @@ type PatientDetailsModalProps = {
   open: boolean;
   onClose: () => void;
   patient?: {
+    patient_key: string;
     first_name: string;
     last_name: string;
     gender: string;
@@ -44,6 +47,21 @@ const ModalBox = styled(Box)({
   boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
 });
 
+const MainButton = styled(Button)({
+  padding: "8px 24px",
+  fontSize: "14px",
+  fontWeight: "500",
+  lineHeight: "24px",
+  textAlign: "center",
+  borderRadius: "10px",
+  color: customColors.info.contrastText,
+  backgroundColor: customColors.green.main,
+
+  "&:hover": {
+    backgroundColor: customColors.green.dark,
+  },
+});
+
 const FormGrid = styled(Grid)({
   flexWrap: "nowrap",
   gap: "0 24px",
@@ -55,6 +73,11 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
   onClose,
   patient,
 }) => {
+  const navigate = useNavigate();
+
+  const viewPatientRecords = () => {
+    navigate("/patient/" + patient?.patient_key);
+  };
   return (
     <>
       <Modal
@@ -65,10 +88,16 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
       >
         <ModalBox>
           <Stack>
-            <Stack sx={{ marginBottom: "8px" }}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{ marginBottom: "8px" }}
+            >
               <Typography variant="h4" sx={{ color: customColors.green.main }}>
                 Patient details
               </Typography>
+              <MainButton onClick={viewPatientRecords}>RECORDS</MainButton>
             </Stack>
             <Stack sx={{ marginBottom: "24px" }}>
               Patient since: {formatDateWithClock(patient?.created_at)}

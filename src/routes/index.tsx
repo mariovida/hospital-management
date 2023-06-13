@@ -9,6 +9,7 @@ import { Layout as DoctorLayout } from "@src/layouts/doctor-layout";
 import HomePage from "@src/pages";
 import PatientsPage from "@src/pages/patients/Patients";
 import AddNewPatientPage from "@src/pages/patients/AddNewPatient";
+import PatientRecordsPage from "@src/pages/patients/PatientRecords";
 import DoctorsPage from "@src/pages/doctors/Doctors";
 import AddNewDoctorPage from "@src/pages/doctors/AddNewDoctor";
 import InvoicesPage from "@src/pages/invoices/Invoices";
@@ -64,6 +65,10 @@ export const routes: RouteObject[] = [
       {
         path: "/patients/add-new",
         element: <AddNewPatientPage />,
+      },
+      {
+        path: "/patient/:id",
+        element: <PatientRecordsPage />,
       },
       {
         path: "/doctors",
