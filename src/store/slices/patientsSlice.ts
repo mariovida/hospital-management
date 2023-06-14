@@ -6,12 +6,14 @@ import { Patients } from "@src/types/patients";
 
 type PatientState = {
   patients: Patients[];
+  selectedRecords: Patients[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 };
 
 const initialState: PatientState = {
   patients: [],
+  selectedRecords: [],
   status: "idle",
   error: null,
 };
@@ -20,6 +22,13 @@ export const fetchPatients = createAsyncThunk(
   "patients/fetchPatients",
   async () => {
     return await api.getPatients();
+  }
+);
+
+export const fetchPatientRecords = createAsyncThunk(
+  "patients/fetchPatientRecords",
+  async (id: string) => {
+    return await api.getPatientRecords(id);
   }
 );
 
@@ -43,6 +52,10 @@ const patientsSlice = createSlice({
       .addCase(fetchPatients.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "An error occurred";
+      })
+      .addCase(fetchPatientRecords.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.selectedRecords = action.payload;
       })
       .addCase(addNewPatient.fulfilled, (state, action) => {
         state.status = "succeeded";
