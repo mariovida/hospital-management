@@ -19,6 +19,7 @@ const Page = () => {
   const records = useSelector(
     (state: RootState) => state.patients.selectedRecords
   );
+  console.log(records);
 
   useEffect(() => {
     try {
@@ -41,7 +42,9 @@ const Page = () => {
                 sx={{ marginBottom: "40px" }}
               >
                 <div>
-                  <Typography variant="h4">Patients</Typography>
+                  <Typography variant="h4">
+                    {records.patient?.first_name} {records.patient?.last_name}
+                  </Typography>
                 </div>
               </Stack>
             </Grid>
