@@ -39,21 +39,12 @@ export const useSections = () => {
           },
           {
             title: "Patients",
+            path: paths.patients,
             icon: (
               <SvgIcon fontSize="small">
                 <PatientsIcon />
               </SvgIcon>
             ),
-            items: [
-              {
-                title: "View all",
-                path: paths.patients,
-              },
-              /*{
-                title: "Add new",
-                path: paths.addNewPatient,
-              },*/
-            ],
           },
           /*{
             title: "Doctors",
