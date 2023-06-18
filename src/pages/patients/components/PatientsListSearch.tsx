@@ -76,7 +76,7 @@ export const PatientsListSearch: React.FC<PatientsListSearchProps> = (
             defaultValue=""
             fullWidth
             inputProps={{ ref: queryRef }}
-            placeholder="Search patients by OIB"
+            placeholder="Search patients"
             startAdornment={
               <InputAdornment position="start">
                 <SvgIcon>
