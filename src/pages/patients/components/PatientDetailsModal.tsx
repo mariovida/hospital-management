@@ -55,7 +55,6 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
   onClose,
   patient,
 }) => {
-  console.log(patient);
   return (
     <>
       <Modal
