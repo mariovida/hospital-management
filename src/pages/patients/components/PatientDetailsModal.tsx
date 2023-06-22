@@ -79,6 +79,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="First name"
                   value={patient?.first_name || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -86,6 +89,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Last name"
                   value={patient?.last_name || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
             </FormGrid>
@@ -95,6 +101,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Gender"
                   value={patient?.gender === "M" ? "Male" : "Female"}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -102,15 +111,32 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Date of birth"
                   value={patient?.date_of_birth || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
             </FormGrid>
             <FormGrid container>
               <Grid xs={12} md={6}>
-                <TextField label="MBO" value={patient?.mbo || ""} fullWidth />
+                <TextField
+                  label="MBO"
+                  value={patient?.mbo || ""}
+                  fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
               <Grid xs={12} md={6}>
-                <TextField label="OIB" value={patient?.oib || ""} fullWidth />
+                <TextField
+                  label="OIB"
+                  value={patient?.oib || ""}
+                  fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
             </FormGrid>
             <FormGrid>
@@ -122,6 +148,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Email address"
                   value={patient?.email || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -129,6 +158,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Phone number"
                   value={patient?.phone_number || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
             </FormGrid>
@@ -141,18 +173,31 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                   label="Address"
                   value={patient?.address || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
             </FormGrid>
             <FormGrid container sx={{ marginBottom: "0 !important" }}>
               <Grid xs={12} md={6}>
-                <TextField label="City" value={patient?.city || ""} fullWidth />
+                <TextField
+                  label="City"
+                  value={patient?.city || ""}
+                  fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
               <Grid xs={12} md={6}>
                 <TextField
                   label="Country"
                   value={patient?.country || ""}
                   fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </Grid>
             </FormGrid>
