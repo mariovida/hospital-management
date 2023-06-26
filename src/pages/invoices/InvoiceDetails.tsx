@@ -50,8 +50,9 @@ const BackButton = styled(Button)({
 
 const StatusBadge = styled(Typography)({
   display: "inline-block",
-  fontSize: "21px",
-  fontWeight: "600",
+  fontFamily: "Plus Jakarta Sans",
+  fontSize: "28px",
+  fontWeight: "bold",
   letterSpacing: "1px",
   textTransform: "uppercase",
 
@@ -126,7 +127,7 @@ const Page = () => {
             <Grid xs={12}>
               <Card
                 sx={{
-                  marginTop: "24px",
+                  marginTop: "32px",
                   borderRadius: "10px",
                   boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
                 }}
@@ -191,20 +192,20 @@ const Page = () => {
                           <TableCell>DESCRIPTION</TableCell>
                           <TableCell>QUANTITY</TableCell>
                           <TableCell>UNIT PRICE</TableCell>
-                          <TableCell>TOTAL</TableCell>
+                          <TableCell align="right">TOTAL</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {invoice.items ? (
                           invoice.items.map((item: any, index: number) => (
                             <TableRow hover key={index}>
-                              <TableCell>{index + 1}</TableCell>
+                              <TableCell width={70}>{index + 1}</TableCell>
                               <TableCell>{item.name}</TableCell>
                               <TableCell width={150}>{item.quantity}</TableCell>
                               <TableCell width={200}>
                                 € {numeral(item.price / 100).format(`0,0.00`)}
                               </TableCell>
-                              <TableCell width={200}>
+                              <TableCell width={200} align="right">
                                 €{" "}
                                 {numeral(
                                   (item.quantity * item.price) / 100
@@ -217,6 +218,31 @@ const Page = () => {
                             <TableCell colSpan={4}>No items found</TableCell>
                           </TableRow>
                         )}
+                        <TableRow>
+                          <TableCell sx={{ borderBottom: "none" }}></TableCell>
+                          <TableCell sx={{ borderBottom: "none" }}></TableCell>
+                          <TableCell sx={{ borderBottom: "none" }}></TableCell>
+                          <TableCell sx={{ borderBottom: "none" }}>
+                            <Typography
+                              sx={{ fontSize: "14px", fontWeight: "600" }}
+                            >
+                              TOTAL
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{ borderBottom: "none" }}
+                            align="right"
+                          >
+                            <Typography
+                              sx={{ fontSize: "14px", fontWeight: "600" }}
+                            >
+                              €
+                              {numeral(invoice.total_price / 100).format(
+                                `0,0.00`
+                              )}
+                            </Typography>
+                          </TableCell>
+                        </TableRow>
                       </TableBody>
                     </Table>
                   </Stack>
