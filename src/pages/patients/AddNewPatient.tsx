@@ -160,7 +160,7 @@ const Page = () => {
             />
             <Grid xs={12}>
               <CustomCard>
-                <CardContent sx={{ padding: "0" }}>
+                <CardContent sx={{ padding: "0 !important" }}>
                   <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" sx={{ marginBottom: "24px" }}>
                       Patient information

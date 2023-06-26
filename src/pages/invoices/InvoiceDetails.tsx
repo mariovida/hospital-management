@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@src/store/store";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
@@ -17,6 +18,7 @@ import { paths } from "@src/paths";
 import { fetchInvoiceDetails } from "@src/store/slices/invoicesSlice";
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
+import { CardContent } from "@mui/material";
 
 const BackButton = styled(Button)({
   minWidth: "unset",
@@ -98,6 +100,19 @@ const Page = () => {
             </Grid>
             <Grid xs={12}>
               <Divider />
+            </Grid>
+            <Grid xs={12}>
+              <Card
+                sx={{
+                  marginTop: "24px",
+                  borderRadius: "10px",
+                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                }}
+              >
+                <CardContent>
+                  <Typography>ss</Typography>
+                </CardContent>
+              </Card>
             </Grid>
           </Grid>
         </Container>

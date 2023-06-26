@@ -64,9 +64,6 @@ export const createComponents = (): Components => {
       styleOverrides: {
         root: {
           padding: "32px 24px",
-          "&:last-child": {
-            paddingBottom: "0px",
-          },
         },
       },
     },
