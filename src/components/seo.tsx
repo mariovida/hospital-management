@@ -1,7 +1,7 @@
-import React from 'react';
-import type { FC } from 'react';
-import { Helmet } from 'react-helmet-async';
-import PropTypes from 'prop-types';
+import React from "react";
+import type { FC } from "react";
+import { Helmet } from "react-helmet-async";
+import PropTypes from "prop-types";
 
 interface SeoProps {
   title?: string;
@@ -10,7 +10,7 @@ interface SeoProps {
 export const Seo: FC<SeoProps> = (props) => {
   const { title } = props;
 
-  const fullTitle = title ? title + ' | KrikEM' : 'KrikEM';
+  const fullTitle = title ? title + " | Hospital" : "Hospital";
 
   return (
     <Helmet>
