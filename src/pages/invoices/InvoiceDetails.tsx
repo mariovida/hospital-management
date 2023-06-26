@@ -2,13 +2,20 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import numeral from "numeral";
 import { AppDispatch, RootState } from "@src/store/store";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
 import ArrowLeft from "@src/icons/arrow-left";
@@ -18,7 +25,6 @@ import { paths } from "@src/paths";
 import { fetchInvoiceDetails } from "@src/store/slices/invoicesSlice";
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
-import { CardContent } from "@mui/material";
 
 const BackButton = styled(Button)({
   minWidth: "unset",
@@ -130,7 +136,7 @@ const Page = () => {
                     direction="row"
                     justifyContent="flex-end"
                     alignItems="center"
-                    sx={{ marginBottom: "16px" }}
+                    sx={{ marginBottom: "32px" }}
                   >
                     {invoice.status === "paid" ? (
                       <StatusBadge>
@@ -161,6 +167,10 @@ const Page = () => {
                       </Typography>
                       <Typography>{invoice.patient_dob}</Typography>
                     </Stack>
+                    <Stack>
+                      <Typography sx={{ fontWeight: "600" }}>OIB</Typography>
+                      <Typography>{invoice.patient_oib}</Typography>
+                    </Stack>
                     <Stack alignItems="flex-end">
                       <Typography sx={{ fontWeight: "600" }}>
                         ADDRESS
@@ -170,6 +180,45 @@ const Page = () => {
                         {invoice.patient_city}, {invoice.patient_country}
                       </Typography>
                     </Stack>
+                  </Stack>
+                  <Stack sx={{ marginTop: "32px" }}>
+                    <Table>
+                      <TableHead
+                        sx={{ backgroundColor: customColors.green.lightest }}
+                      >
+                        <TableRow>
+                          <TableCell>#</TableCell>
+                          <TableCell>DESCRIPTION</TableCell>
+                          <TableCell>QUANTITY</TableCell>
+                          <TableCell>UNIT PRICE</TableCell>
+                          <TableCell>TOTAL</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {invoice.items ? (
+                          invoice.items.map((item: any, index: number) => (
+                            <TableRow hover key={index}>
+                              <TableCell>{index + 1}</TableCell>
+                              <TableCell>{item.name}</TableCell>
+                              <TableCell width={150}>{item.quantity}</TableCell>
+                              <TableCell width={200}>
+                                € {numeral(item.price / 100).format(`0,0.00`)}
+                              </TableCell>
+                              <TableCell width={200}>
+                                €{" "}
+                                {numeral(
+                                  (item.quantity * item.price) / 100
+                                ).format(`0,0.00`)}
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        ) : (
+                          <TableRow>
+                            <TableCell colSpan={4}>No items found</TableCell>
+                          </TableRow>
+                        )}
+                      </TableBody>
+                    </Table>
                   </Stack>
                 </CardContent>
               </Card>
