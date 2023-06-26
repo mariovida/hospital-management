@@ -42,6 +42,22 @@ const BackButton = styled(Button)({
   },
 });
 
+const StatusBadge = styled(Typography)({
+  display: "inline-block",
+  fontSize: "21px",
+  fontWeight: "600",
+  letterSpacing: "1px",
+  textTransform: "uppercase",
+
+  ".status-paid": {
+    color: customColors.green.main,
+  },
+
+  ".status-pending": {
+    color: customColors.warning.dark,
+  },
+});
+
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
@@ -110,7 +126,51 @@ const Page = () => {
                 }}
               >
                 <CardContent>
-                  <Typography>ss</Typography>
+                  <Stack
+                    direction="row"
+                    justifyContent="flex-end"
+                    alignItems="center"
+                    sx={{ marginBottom: "16px" }}
+                  >
+                    {invoice.status === "paid" ? (
+                      <StatusBadge>
+                        <span className="status-paid">{invoice.status}</span>
+                      </StatusBadge>
+                    ) : (
+                      <StatusBadge>
+                        <span className="status-pending">{invoice.status}</span>
+                      </StatusBadge>
+                    )}
+                  </Stack>
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="flex-start"
+                  >
+                    <Stack>
+                      <Typography sx={{ fontWeight: "600" }}>
+                        PATIENT
+                      </Typography>
+                      <Typography>
+                        {invoice.patient_name} {invoice.patient_surname}
+                      </Typography>
+                    </Stack>
+                    <Stack>
+                      <Typography sx={{ fontWeight: "600" }}>
+                        DATE OF BIRTH
+                      </Typography>
+                      <Typography>{invoice.patient_dob}</Typography>
+                    </Stack>
+                    <Stack alignItems="flex-end">
+                      <Typography sx={{ fontWeight: "600" }}>
+                        ADDRESS
+                      </Typography>
+                      <Typography>{invoice.patient_address}</Typography>
+                      <Typography>
+                        {invoice.patient_city}, {invoice.patient_country}
+                      </Typography>
+                    </Stack>
+                  </Stack>
                 </CardContent>
               </Card>
             </Grid>
