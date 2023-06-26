@@ -1,17 +1,44 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@src/store/store";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
+import ArrowLeft from "@src/icons/arrow-left";
 
 import { Seo } from "@src/components/seo";
+import { paths } from "@src/paths";
 import { fetchInvoiceDetails } from "@src/store/slices/invoicesSlice";
+import styled from "@emotion/styled";
+import customColors from "@src/theme/colors";
+
+const BackButton = styled(Button)({
+  minWidth: "unset",
+  padding: "0",
+  marginBottom: "32px",
+
+  "& svg": {
+    width: "20px",
+    height: "20px",
+    marginTop: "4px",
+    marginRight: "8px",
+  },
+
+  "& a": {
+    display: "inline-flex",
+    alignItem: "center",
+    fontSize: "16px",
+    fontWeight: "600",
+    textDecoration: "none",
+    color: customColors.text.primary,
+  },
+});
 
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -38,15 +65,12 @@ const Page = () => {
         <Container maxWidth="xl">
           <Grid container>
             <Grid xs={12}>
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                sx={{ marginBottom: "40px" }}
-              >
-                <div>
-                  <Typography variant="h4">Invoice details</Typography>
-                </div>
-              </Stack>
+              <BackButton>
+                <Box component={Link} to={paths.invoices}>
+                  <ArrowLeft />
+                  Invoices
+                </Box>
+              </BackButton>
             </Grid>
             <Grid xs={12}>
               <Stack
@@ -56,13 +80,24 @@ const Page = () => {
                 sx={{ marginBottom: "40px" }}
               >
                 <Stack>
-                  <Typography variant="h4">INV-{invoice.inv_number}</Typography>
-                  <Typography>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: customColors.green.main,
+                      marginBottom: "8px",
+                    }}
+                  >
+                    INV-{invoice.inv_number}
+                  </Typography>
+                  <Typography sx={{ fontSize: "18px", fontWeight: "500" }}>
                     {invoice.patient_name} {invoice.patient_surname}
                   </Typography>
                 </Stack>
                 <Typography></Typography>
               </Stack>
+            </Grid>
+            <Grid xs={12}>
+              <Divider />
             </Grid>
           </Grid>
         </Container>
