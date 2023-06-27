@@ -52,6 +52,7 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
   onClose,
   patient,
 }) => {
+  console.log(patient);
   return (
     <>
       <Modal
@@ -102,6 +103,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
+            <FormGrid>
+              <Divider />
+            </FormGrid>
             <FormGrid container>
               <Grid xs={12} md={6}>
                 <TextField
@@ -126,7 +130,9 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 <TextField label="OIB" value={patient?.oib || ""} fullWidth />
               </Grid>
             </FormGrid>
-            <Divider />
+            <FormGrid>
+              <Divider />
+            </FormGrid>
           </Stack>
         </ModalBox>
       </Modal>
