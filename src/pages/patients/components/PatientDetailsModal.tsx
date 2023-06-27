@@ -23,6 +23,9 @@ type PatientDetailsModalProps = {
     phone_number: string;
     mbo: string;
     oib: string;
+    address: string;
+    city: string;
+    country: string;
     created_at: string;
   };
 };
@@ -103,6 +106,14 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
+            <FormGrid container>
+              <Grid xs={12} md={6}>
+                <TextField label="MBO" value={patient?.mbo || ""} fullWidth />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField label="OIB" value={patient?.oib || ""} fullWidth />
+              </Grid>
+            </FormGrid>
             <FormGrid>
               <Divider />
             </FormGrid>
@@ -122,16 +133,29 @@ const PatientDetailsModal: FC<PatientDetailsModalProps> = ({
                 />
               </Grid>
             </FormGrid>
-            <FormGrid container>
-              <Grid xs={12} md={6}>
-                <TextField label="MBO" value={patient?.mbo || ""} fullWidth />
-              </Grid>
-              <Grid xs={12} md={6}>
-                <TextField label="OIB" value={patient?.oib || ""} fullWidth />
-              </Grid>
-            </FormGrid>
             <FormGrid>
               <Divider />
+            </FormGrid>
+            <FormGrid container>
+              <Grid xs={12}>
+                <TextField
+                  label="Address"
+                  value={patient?.address || ""}
+                  fullWidth
+                />
+              </Grid>
+            </FormGrid>
+            <FormGrid container sx={{ marginBottom: "0 !important" }}>
+              <Grid xs={12} md={6}>
+                <TextField label="City" value={patient?.city || ""} fullWidth />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <TextField
+                  label="Country"
+                  value={patient?.country || ""}
+                  fullWidth
+                />
+              </Grid>
             </FormGrid>
           </Stack>
         </ModalBox>
