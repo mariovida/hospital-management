@@ -8,6 +8,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 ## Features
 
+- **Patient Management:** Easily manage patient records, including personal information, medical history, and treatment details.
+
 ## Available Scripts
 
 In the project directory, you can run:
