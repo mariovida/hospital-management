@@ -78,16 +78,9 @@ const Page = () => {
       .required("Required field"),
     gender: Yup.string(),
     date_of_birth: Yup.string(),
-    oib: Yup.string().max(11, "OIB cannot be longer than 11 characters"),
-    mbo: Yup.string()
-      .max(9, "MBO cannot be longer than 9 characters")
-      .required("Required field"),
-    address: Yup.string().required("Required field"),
-    city: Yup.string().required("Required field"),
-    country: Yup.string().required("Required field"),
-    email: Yup.string().required("Required field"),
-    phone_number: Yup.string(),
-    subscribed: Yup.boolean(),
+    type: Yup.string().required("Required field"),
+    username: Yup.string().required("Required field"),
+    password: Yup.string().required("Required field"),
   });
 
   const formik = useFormik<AddPatientFormValues>({
@@ -129,7 +122,7 @@ const Page = () => {
     { label: "Female", value: "F" },
   ];
 
-  const countryOptions = [
+  const typeOptions = [
     { label: "Croatia", value: "Croatia" },
     { label: "Bosnia and Herzegovina", value: "BiH" },
     { label: "Slovenia", value: "Slovenija" },
@@ -155,15 +148,15 @@ const Page = () => {
             <SuccessModal
               open={openModal}
               onConfirm={handleCloseModal}
-              text="Novi pacijent je uspješno dodan."
-              modalTitle="Uspješan unos"
+              text="New doctor added successfully."
+              modalTitle="Success"
             />
             <Grid xs={12}>
               <CustomCard>
                 <CardContent sx={{ padding: "0 !important" }}>
                   <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" sx={{ marginBottom: "24px" }}>
-                      Patient information
+                      Doctor information
                     </Typography>
                     <FormGrid container sx={{ gap: "0px !important" }}>
                       <Grid xs={12} md={6} sx={{ paddingRight: "16px" }}>
@@ -200,18 +193,13 @@ const Page = () => {
                           label="Date of birth"
                         />
                       </Grid>
-                      <Grid xs={12} md={3} sx={{ paddingRight: "16px" }}>
-                        <CustomTextField
+                      <Grid xs={12} md={6}>
+                        <CustomSelectField
                           formik={formik}
-                          name="oib"
-                          label="OIB"
-                        />
-                      </Grid>
-                      <Grid xs={12} md={3}>
-                        <CustomTextField
-                          formik={formik}
-                          name="mbo"
-                          label="MBO"
+                          name="type"
+                          label="Type"
+                          options={typeOptions}
+                          defaultOptionLabel="Type"
                           required={true}
                         />
                       </Grid>
@@ -220,64 +208,23 @@ const Page = () => {
                       variant="h5"
                       sx={{ marginTop: "32px", marginBottom: "24px" }}
                     >
-                      Contant information
+                      Doctor sign-in information
                     </Typography>
-                    <FormGrid container sx={{ gap: "0px !important" }}>
-                      <Grid xs={12} md={4} sx={{ paddingRight: "16px" }}>
-                        <CustomTextField
-                          formik={formik}
-                          name="address"
-                          label="Address"
-                          required={true}
-                        />
-                      </Grid>
-                      <Grid xs={12} md={4} sx={{ paddingRight: "16px" }}>
-                        <CustomTextField
-                          formik={formik}
-                          name="city"
-                          label="City"
-                          required={true}
-                        />
-                      </Grid>
-                      <Grid xs={12} md={4}>
-                        <CustomSelectField
-                          formik={formik}
-                          name="country"
-                          label="Country"
-                          options={countryOptions}
-                          defaultOptionLabel="COUNTRY"
-                        />
-                      </Grid>
-                    </FormGrid>
                     <FormGrid container sx={{ gap: "0px !important" }}>
                       <Grid xs={12} md={6} sx={{ paddingRight: "16px" }}>
                         <CustomTextField
                           formik={formik}
-                          name="email"
-                          label="Email adresa"
+                          name="username"
+                          label="Username"
                           required={true}
                         />
                       </Grid>
                       <Grid xs={12} md={6}>
                         <CustomTextField
                           formik={formik}
-                          name="phone_number"
-                          label="Phone number"
-                        />
-                      </Grid>
-                    </FormGrid>
-                    <FormGrid container>
-                      <Grid xs={12}>
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={formik.values.subscribed}
-                              onChange={formik.handleChange}
-                              name="subscribed"
-                              color="primary"
-                            />
-                          }
-                          label="Subscription to news, benefits, and discounts"
+                          name="password"
+                          label="Password"
+                          required={true}
                         />
                       </Grid>
                     </FormGrid>
