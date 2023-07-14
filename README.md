@@ -12,6 +12,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 - **Appointment Scheduling:** Efficiently schedule and manage appointments for patients and medical staff.
 
+- **Staff Information:** Keep track of staff details, including doctors, nurses, and administrative personnel.
+
 ## Available Scripts
 
 In the project directory, you can run:
