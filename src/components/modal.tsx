@@ -12,6 +12,7 @@ interface SuccessModalProps {
   onClose?: () => void;
   text: string;
   modalTitle: string;
+  buttonText: string;
   onConfirm?: () => void;
 }
 
@@ -74,6 +75,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
   onClose,
   text,
   modalTitle,
+  buttonText,
   onConfirm,
 }) => {
   return (
@@ -87,7 +89,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
         <Typography variant="h2">{modalTitle}</Typography>
         <Typography variant="body2">{text}</Typography>
         <CloseButton variant="contained" onClick={onConfirm}>
-          Potvrdi
+          {buttonText}
         </CloseButton>
       </ModalBox>
     </Modal>

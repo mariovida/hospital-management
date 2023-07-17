@@ -64,7 +64,7 @@ const Page = () => {
   });
 
   const addNewRecord = () => {
-    navigate("/invoices/add-new");
+    navigate("/appointments/add-new");
   };
 
   return (

@@ -16,6 +16,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
 import ArrowLeft from "@src/icons/arrow-left";
+import SuccessModal from "@src/components/modal";
 
 import { Seo } from "@src/components/seo";
 import { paths } from "@src/paths";
@@ -86,6 +87,7 @@ interface AddAppointmentFormValues {
 
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const patients = useSelector((state: RootState) => state.patients.patients);
   const [scheduleDate, setScheduleDate] = useState<Date | null>(null);
   const [selectedPatient, setSelectedPatient] = useState({
@@ -93,6 +95,7 @@ const Page = () => {
     id: 0,
     mbo: "",
   });
+  const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -148,7 +151,7 @@ const Page = () => {
               date: formattedDate,
             })
           );
-          window.location.reload();
+          setConfirmationModalOpen(true);
         } catch (error) {
           console.error("Failed", error);
         }
@@ -241,6 +244,16 @@ const Page = () => {
                       </Typography>
                     </Stack>
                   </Stack>
+                  {confirmationModalOpen && (
+                    <SuccessModal
+                      open={true}
+                      onClose={() => setConfirmationModalOpen(false)}
+                      onConfirm={() => navigate("/appointments")}
+                      text="Appointment was added successfully."
+                      modalTitle="Appointment added"
+                      buttonText="Confirm"
+                    />
+                  )}
                   <form onSubmit={formik.handleSubmit}>
                     <FormGrid container sx={{ marginTop: "24px" }}>
                       <Grid xs={6}>
