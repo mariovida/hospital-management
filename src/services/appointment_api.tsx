@@ -4,14 +4,15 @@ import { fetchWithToken } from "@src/utils/fetchWithToken";
 export const api = {
   addNewAppointment: async (
     appointmentData: Appointments,
-    id: string | number
+    id: string | number,
+    date: any
   ): Promise<any> => {
     return fetchWithToken("http://localhost:3000/appointments/add-new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ appointmentData, id }),
+      body: JSON.stringify({ appointmentData, id, date }),
     });
   },
 };

@@ -21,11 +21,13 @@ export const addNewAppointment = createAsyncThunk(
   async ({
     appointmentData,
     id,
+    date,
   }: {
     appointmentData: Appointments;
     id: string | number;
+    date: any;
   }) => {
-    return await api.addNewAppointment(appointmentData, id);
+    return await api.addNewAppointment(appointmentData, id, date);
   }
 );
 

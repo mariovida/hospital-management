@@ -11,6 +11,7 @@ import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
 import CustomTextField from "@src/components/text-field";
 import CustomSelectField from "@src/components/select-field";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/system/Unstable_Grid";
@@ -86,6 +87,7 @@ interface AddAppointmentFormValues {
 const Page = () => {
   const dispatch: AppDispatch = useDispatch();
   const patients = useSelector((state: RootState) => state.patients.patients);
+  const [scheduleDate, setScheduleDate] = useState<Date | null>(null);
   const [selectedPatient, setSelectedPatient] = useState({
     name: "",
     id: 0,
@@ -123,14 +125,30 @@ const Page = () => {
     validationSchema,
     onSubmit: async (values) => {
       const errors = await formik.validateForm();
+      let formattedDate;
       if (Object.keys(errors).length === 0) {
+        if (scheduleDate) {
+          formattedDate = `${scheduleDate.getFullYear()}-${String(
+            scheduleDate.getMonth() + 1
+          ).padStart(2, "0")}-${String(scheduleDate.getDate()).padStart(
+            2,
+            "0"
+          )} ${String(scheduleDate.getHours()).padStart(2, "0")}:${String(
+            scheduleDate.getMinutes()
+          ).padStart(2, "0")}:${String(scheduleDate.getSeconds()).padStart(
+            2,
+            "0"
+          )}`;
+        }
         try {
           await dispatch(
             addNewAppointment({
               appointmentData: values,
               id: selectedPatient.id,
+              date: formattedDate,
             })
           );
+          window.location.reload();
         } catch (error) {
           console.error("Failed", error);
         }
@@ -243,6 +261,19 @@ const Page = () => {
                           defaultOptionLabel="Status"
                         />
                       </Grid>
+                    </FormGrid>
+                    <FormGrid container sx={{ marginTop: "24px" }}>
+                      <Grid xs={6}>
+                        <DateTimePicker
+                          sx={{
+                            width: "100%",
+                          }}
+                          label="Appointment date and time"
+                          onChange={(date) => setScheduleDate(date)}
+                          value={scheduleDate}
+                        />
+                      </Grid>
+                      <Grid xs={6}></Grid>
                     </FormGrid>
                     <Stack direction="row" justifyContent="flex-end">
                       <SubmitButton type="submit" variant="contained">
