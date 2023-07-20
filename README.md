@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Hospital Management System
 
 ![alt text](screens/screen1.png)
+
+## Overview
 
 ## Available Scripts
 
