@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import * as Yup from "yup";
 import { useAppDispatch } from "@src/hooks/use-dispatch";
 import { useFormik } from "formik";
