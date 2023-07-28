@@ -16,6 +16,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 - **Billing and Invoicing:** Streamline the billing process with features for generating invoices and tracking payments.
 
+- **Reporting:** Generate reports to gain insights into various aspects of hospital management.
+
 ## Available Scripts
 
 In the project directory, you can run:
