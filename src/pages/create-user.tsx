@@ -58,7 +58,6 @@ const validationSchema = Yup.object().shape({
 
 const Page: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [successMessage, setSuccessMessage] = React.useState<string | null>(
     null
   );
