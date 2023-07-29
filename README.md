@@ -26,7 +26,7 @@ The Hospital Management System is a web application designed to streamline and e
 
 - **Database:** [MySQL](https://www.mysql.com/)
 
-## Available Scripts
+## Getting Started
 
 ### `npm start`
 
