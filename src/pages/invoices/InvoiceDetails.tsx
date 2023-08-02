@@ -23,7 +23,6 @@ const Page = () => {
   );
   console.log(invoice);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     try {
