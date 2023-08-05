@@ -61,7 +61,7 @@ const Page = () => {
                     {invoice.patient_name} {invoice.patient_surname}
                   </Typography>
                 </Stack>
-                <Typography>ss</Typography>
+                <Typography></Typography>
               </Stack>
             </Grid>
           </Grid>
