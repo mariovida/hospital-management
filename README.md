@@ -44,9 +44,12 @@ The Hospital Management System is a web application designed to streamline and e
    - Start the server: `node app`
 
 2. Set up the frontend:
+
    - Navigate to the `frontend` directory: `cd frontend`
    - Install dependencies: `npm install`
    - Start the application: `npm run dev`
+
+3. Access the application in your web browser.
 
 ### `npm start`
 
