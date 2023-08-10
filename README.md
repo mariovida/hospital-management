@@ -45,6 +45,7 @@ The Hospital Management System is a web application designed to streamline and e
 
 2. Set up the frontend:
    - Navigate to the `frontend` directory: `cd frontend`
+   - Install dependencies: `npm install`
 
 ### `npm start`
 
