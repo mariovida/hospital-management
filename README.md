@@ -51,7 +51,7 @@ The Hospital Management System is a web application designed to streamline and e
 
 3. Access the application in your web browser.
 
-### `npm start`
+## Usage
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
