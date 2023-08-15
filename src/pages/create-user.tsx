@@ -77,7 +77,6 @@ const Page: React.FC = () => {
         await dispatch(registerUser(values));
         setSuccessMessage("Registration successful!");
       } catch (error) {
-        // Handle any errors here
         console.error("Registration error:", error);
       }
     },
