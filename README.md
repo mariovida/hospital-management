@@ -18,6 +18,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 - **Reporting:** Generate reports to gain insights into various aspects of hospital management.
 
+## Technologies Used
+
 ## Available Scripts
 
 ### `npm start`
