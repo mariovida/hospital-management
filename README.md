@@ -45,6 +45,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 2. Set up the frontend:
 
+- Navigate to the `frontend` directory: `cd frontend`
+
 ### `npm start`
 
 Runs the app in the development mode.\
