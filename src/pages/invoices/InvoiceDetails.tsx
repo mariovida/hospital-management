@@ -22,7 +22,6 @@ const Page = () => {
     (state: RootState) => state.invoices.selectedInvoice
   );
   console.log(invoice);
-  const [page, setPage] = useState(0);
 
   useEffect(() => {
     try {
