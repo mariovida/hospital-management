@@ -74,7 +74,6 @@ const Page: React.FC = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        // Dispatch the action and wait for it to complete
         await dispatch(registerUser(values));
         // Update the success message state
         setSuccessMessage("Registration successful!");
