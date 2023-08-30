@@ -1,6 +1,4 @@
-# Hospital Management System
-
-<h1 align="center">Welcome to Dashboard Website 👋</h1>
+<h1 align="center">Hospital Management System</h1>
 
 ![alt text](screens/screen1.png)
 
