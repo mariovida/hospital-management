@@ -75,7 +75,6 @@ const Page: React.FC = () => {
     onSubmit: async (values) => {
       try {
         await dispatch(registerUser(values));
-        // Update the success message state
         setSuccessMessage("Registration successful!");
       } catch (error) {
         // Handle any errors here
