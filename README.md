@@ -69,7 +69,7 @@ To access the application:
 
 1. Register or log in as an admin/user.
 2. Explore the various modules for patient management, appointment scheduling, staff information, billing, and more.
-3. Enjoy the streamlined hospital management experience!
+3. Enjoy the hospital management experience!
 
 ## Show your support
 
