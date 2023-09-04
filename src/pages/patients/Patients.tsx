@@ -14,7 +14,6 @@ import Grid from "@mui/system/Unstable_Grid";
 import { Seo } from "@src/components/seo";
 import { PatientsListTable } from "@src/pages/patients/components/PatientsListTable";
 import { PatientsListSearch } from "@src/pages/patients/components/PatientsListSearch";
-import { applyPagination } from "@src/utils/apply-pagination";
 import { fetchPatients } from "@src/store/slices/patientsSlice";
 
 const Page = () => {
