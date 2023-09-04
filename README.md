@@ -55,6 +55,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 The frontend of this project is set up with Vite to enhance the development experience. By default, the application runs on port 3002 (localhost:3002).
 
+To access the application:
+
 ### Access Information
 
 - **Administrator:**
