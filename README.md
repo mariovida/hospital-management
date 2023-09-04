@@ -74,5 +74,3 @@ To access the application:
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-Runs the app in the development mode.\
