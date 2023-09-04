@@ -57,6 +57,8 @@ The frontend of this project is set up with Vite to enhance the development expe
 
 To access the application:
 
+- Open your web browser and go to [http://localhost:3002](http://localhost:3002).
+
 ### Access Information
 
 - **Administrator:**
