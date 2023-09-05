@@ -20,6 +20,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 ## Technologies Used
 
+- **Frontend:** [React](https://reactjs.org/), [Vite](https://vitejs.dev/)
+
 ## Available Scripts
 
 ### `npm start`
