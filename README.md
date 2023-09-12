@@ -35,6 +35,8 @@ The Hospital Management System is a web application designed to streamline and e
 - Clone the repository
 - Navigate to the project directory
 
+### Installation
+
 ### `npm start`
 
 Runs the app in the development mode.\
