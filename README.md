@@ -37,6 +37,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 ### Installation
 
+1. Set up the backend:
+
 ### `npm start`
 
 Runs the app in the development mode.\
