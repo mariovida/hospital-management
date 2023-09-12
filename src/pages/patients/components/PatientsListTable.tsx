@@ -11,7 +11,6 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography,
 } from "@mui/material";
 import DetailsIcon from "@src/icons/details";
 import PatientDetailsModal from "./PatientDetailsModal";
