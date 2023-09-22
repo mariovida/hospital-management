@@ -51,6 +51,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 3. Access the application in your web browser.
 
+### Vite Configuration
+
 ### Access Information
 
 - **Administrator:**
