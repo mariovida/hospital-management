@@ -55,6 +55,7 @@ The Hospital Management System is a web application designed to streamline and e
 
 1. Register or log in as an admin/user.
 2. Explore the various modules for patient management, appointment scheduling, staff information, billing, and more.
+3. Enjoy the streamlined hospital management experience!
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
