@@ -118,7 +118,6 @@ const Page = () => {
             </Grid>
             <Grid xs={12}>
               <InvoicesTable
-                count={invoices.length}
                 items={invoices}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleRowsPerPageChange}
