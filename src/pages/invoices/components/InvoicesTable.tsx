@@ -49,7 +49,6 @@ const StatusBadge = styled(Typography)({
 
 export const InvoicesTable = (props: any) => {
   const {
-    count = 0,
     items = [],
     onPageChange = () => {},
     onRowsPerPageChange,
@@ -161,7 +160,6 @@ export const InvoicesTable = (props: any) => {
 };
 
 InvoicesTable.propTypes = {
-  count: PropTypes.number,
   items: PropTypes.array,
   onPageChange: PropTypes.func,
   onRowsPerPageChange: PropTypes.func,
