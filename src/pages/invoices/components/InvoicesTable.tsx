@@ -22,7 +22,6 @@ import ReceiptCheckIcon from "@untitled-ui/icons-react/build/esm/ReceiptCheck";
 import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
 import { formatDate } from "@src/utils/formatDate";
 import { RouterLink } from "@src/components/router-link";
-import { paths } from "@src/paths";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
