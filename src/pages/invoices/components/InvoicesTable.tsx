@@ -17,7 +17,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import PatientDetailsModal from "@src/pages/patients/components/PatientDetailsModal";
 import ClockIcon from "@untitled-ui/icons-react/build/esm/Clock";
 import ReceiptCheckIcon from "@untitled-ui/icons-react/build/esm/ReceiptCheck";
 import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
