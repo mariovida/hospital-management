@@ -15,7 +15,6 @@ import TextField from "@mui/material/TextField";
 import { useUpdateEffect } from "@src/hooks/use-update-effect";
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
-import { addNewPatient } from "@src/store/slices/patientsSlice";
 
 interface PatientsListSearchProps {
   onFiltersChange?: (filters: Record<string, any>) => void;
