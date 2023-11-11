@@ -30,6 +30,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 ### Prerequisites
 
+- [Node.js](https://nodejs.org/) installed
+
 ### `npm start`
 
 Runs the app in the development mode.\
