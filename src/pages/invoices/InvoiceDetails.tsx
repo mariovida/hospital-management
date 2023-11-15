@@ -16,7 +16,6 @@ import { Seo } from "@src/components/seo";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { InvoicesSummary } from "@src/pages/invoices/components/InvoicesStats";
 import { InvoicesTable } from "@src/pages/invoices/components/InvoicesTable";
-import { PatientsListSearch } from "@src/pages/patients/components/PatientsListSearch";
 import { fetchInvoiceDetails } from "@src/store/slices/invoicesSlice";
 
 const Page = () => {
