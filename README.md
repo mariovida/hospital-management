@@ -55,6 +55,7 @@ The Hospital Management System is a web application designed to streamline and e
 
 - **Administrator:**
   - Username: admin
+  - Password: test
 
 ## Usage
 
