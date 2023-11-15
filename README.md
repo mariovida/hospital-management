@@ -53,6 +53,8 @@ The Hospital Management System is a web application designed to streamline and e
 
 ### Access Information
 
+- **Administrator:**
+
 ## Usage
 
 1. Register or log in as an admin/user.
