@@ -40,6 +40,24 @@ export const menu_bar = {
   active: "#B2C8BA",
 };
 
+export const success = {
+  lightest: "rgba(226, 253, 191, 0.4)",
+  main: "#8CC83E",
+  dark: "#65A513",
+  darkest: "#3D6A04",
+  border_button: "#CCE5AB",
+  hovered_success_button: "rgba(142, 243, 164, 0.09)",
+};
+
+export const warning = {
+  lightest: "rgba(255, 230, 90, 0.2)",
+  light: "#FDEAD7",
+  main: "#ffeb78",
+  dark: "#DDBD08",
+  darkest: "#772917",
+  border_button: "#D4BB2D",
+};
+
 /* OLD */
 
 export const blue = {
@@ -64,15 +82,6 @@ export const orange = {
   dark: "#D88027",
 };
 
-export const success = {
-  lightest: "rgba(226, 253, 191, 0.4)",
-  main: "#8CC83E",
-  dark: "#65A513",
-  darkest: "#3D6A04",
-  border_button: "#CCE5AB",
-  hovered_success_button: "rgba(142, 243, 164, 0.09)",
-};
-
 export const info = {
   lightest: "#ECFDFF",
   light: "#CFF9FE",
@@ -80,15 +89,6 @@ export const info = {
   dark: "#0E7090",
   darkest: "#164C63",
   contrastText: "#FFFFFF",
-};
-
-export const warning = {
-  lightest: "rgba(255, 230, 90, 0.2)",
-  light: "#FDEAD7",
-  main: "#ffeb78",
-  dark: "#f8dc40",
-  darkest: "#772917",
-  border_button: "#D4BB2D",
 };
 
 export const error = {

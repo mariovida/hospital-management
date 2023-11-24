@@ -6,4 +6,5 @@ export const paths = {
   addNewPatient: "/patients/add-new",
   doctors: "/doctors",
   addNewDoctor: "/doctors/add-new",
+  invoices: "/invoices",
 };

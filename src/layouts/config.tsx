@@ -7,6 +7,7 @@ import { paths } from "@src/paths";
 import HomeSmile from "@src/icons/home-smile";
 import PatientsIcon from "@src/icons/patients";
 import DoctorsIcon from "@src/icons/doctors";
+import InvoicesIcon from "@src/icons/invoices";
 
 export interface Item {
   disabled?: boolean;
@@ -72,6 +73,15 @@ export const useSections = () => {
                 path: paths.addNewDoctor,
               },
             ],
+          },
+          {
+            title: "Invoices",
+            path: paths.invoices,
+            icon: (
+              <SvgIcon fontSize="small">
+                <InvoicesIcon />
+              </SvgIcon>
+            ),
           },
           {
             title: "Create new user",

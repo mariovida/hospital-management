@@ -3,11 +3,13 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit";
 
 import { userReducer } from "@src/store/slices/usersSlice";
 import { patientReducer } from "@src/store/slices/patientsSlice";
+import { invoiceReducer } from "@src/store/slices/invoicesSlice";
 
 const store = configureStore({
   reducer: {
     users: userReducer,
     patients: patientReducer,
+    invoices: invoiceReducer,
   },
 });
 
