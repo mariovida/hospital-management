@@ -6,7 +6,9 @@ import {
   Box,
   Button,
   Card,
+  IconButton,
   Stack,
+  SvgIcon,
   Table,
   TableBody,
   TableCell,
@@ -18,7 +20,10 @@ import {
 import PatientDetailsModal from "@src/pages/patients/components/PatientDetailsModal";
 import ClockIcon from "@untitled-ui/icons-react/build/esm/Clock";
 import ReceiptCheckIcon from "@untitled-ui/icons-react/build/esm/ReceiptCheck";
+import ArrowRightIcon from "@untitled-ui/icons-react/build/esm/ArrowRight";
 import { formatDate } from "@src/utils/formatDate";
+import { RouterLink } from "@src/components/router-link";
+import { paths } from "@src/paths";
 
 import styled from "@emotion/styled";
 import customColors from "@src/theme/colors";
@@ -34,12 +39,14 @@ const StatusBadge = styled(Typography)({
   },
 
   ".status-paid": {
-    backgroundColor: customColors.success.lightest,
+    backgroundColor: customColors.green.lightest,
+    color: customColors.green.dark,
     padding: "4px 10px",
   },
 
   ".status-pending": {
     backgroundColor: customColors.warning.lightest,
+    color: customColors.warning.text,
     padding: "4px 10px",
   },
 });
@@ -54,19 +61,12 @@ export const InvoicesTable = (props: any) => {
     rowsPerPage = 0,
     filters,
   } = props;
-  const [openDetailsModal, setOpenDetailsModal] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState<any | null>(null);
-
-  const openDetailsModalHandler = (patient: any) => {
-    setSelectedPatient(patient);
-    setOpenDetailsModal(true);
-  };
 
   return (
     <Card
       sx={{
-        marginTop: "24px",
-        borderRadius: "8px",
+        marginTop: "40px",
+        borderRadius: "10px",
         boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
       }}
     >
@@ -79,8 +79,8 @@ export const InvoicesTable = (props: any) => {
                   {invoice.status === "paid" ? (
                     <Avatar
                       sx={{
-                        backgroundColor: customColors.success.lightest,
-                        color: customColors.success.dark,
+                        backgroundColor: customColors.green.lightest,
+                        color: customColors.green.dark,
                         height: 46,
                         width: 46,
                       }}
@@ -91,7 +91,7 @@ export const InvoicesTable = (props: any) => {
                     <Avatar
                       sx={{
                         backgroundColor: customColors.warning.lightest,
-                        color: customColors.warning.dark,
+                        color: customColors.warning.text,
                         height: 46,
                         width: 46,
                       }}
@@ -100,14 +100,24 @@ export const InvoicesTable = (props: any) => {
                     </Avatar>
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell width={240}>
                   <Typography sx={{ fontFamily: "Plus Jakarta Sans" }}>
                     INV-{invoice.inv_number}
                   </Typography>
                 </TableCell>
+                <TableCell width={300}>
+                  <Stack>
+                    <Typography sx={{ fontSize: "16px", fontWeight: "500" }}>
+                      Patient
+                    </Typography>
+                    <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
+                      {invoice.patient_name} {invoice.patient_surname}
+                    </Typography>
+                  </Stack>
+                </TableCell>
                 <TableCell>
                   {invoice.total_price !== null ? (
-                    <Typography>
+                    <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>
                       € {numeral(invoice.total_price / 100).format(`0,0.00`)}
                     </Typography>
                   ) : (
@@ -124,7 +134,7 @@ export const InvoicesTable = (props: any) => {
                     </Typography>
                   </Stack>
                 </TableCell>
-                <TableCell>
+                <TableCell width={150}>
                   {invoice.status === "paid" ? (
                     <StatusBadge>
                       <span className="status-paid">{invoice.status}</span>
@@ -134,6 +144,16 @@ export const InvoicesTable = (props: any) => {
                       <span className="status-pending">{invoice.status}</span>
                     </StatusBadge>
                   )}
+                </TableCell>
+                <TableCell width={120} align="right">
+                  <IconButton
+                    component={RouterLink}
+                    href={"/invoice/" + invoice.inv_number}
+                  >
+                    <SvgIcon>
+                      <ArrowRightIcon />
+                    </SvgIcon>
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
