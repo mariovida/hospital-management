@@ -28,7 +28,7 @@ const TitleStack = styled(Stack)({
 
 const CustomCard = styled(Card)({
   padding: "24px",
-  borderRadius: "8px",
+  borderRadius: "10px",
   boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
 });
 
@@ -41,7 +41,7 @@ const FormGrid = styled(Grid)({
 const SubmitButton = styled(Button)({
   backgroundColor: customColors.green.main,
   boxShadow: "none",
-  borderRadius: "8px",
+  borderRadius: "10px",
   marginTop: "24px",
 
   "&:hover": {

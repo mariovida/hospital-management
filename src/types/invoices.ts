@@ -1,9 +1,9 @@
 export interface Invoices {
   id: string;
-  inv_number: string;
+  inv_number?: string;
   created_at: string;
-  status: boolean;
+  status?: string;
   patient_id: number;
   items?: [];
-  totalAmount?: number;
+  total_price?: number;
 }

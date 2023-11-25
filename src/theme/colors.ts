@@ -56,6 +56,7 @@ export const warning = {
   dark: "#DDBD08",
   darkest: "#772917",
   border_button: "#D4BB2D",
+  text: "#B54708",
 };
 
 /* OLD */

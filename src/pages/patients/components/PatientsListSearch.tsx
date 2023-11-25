@@ -29,7 +29,7 @@ const SearchButton = styled(Button)({
   fontWeight: "500",
   lineHeight: "24px",
   textAlign: "center",
-  borderRadius: "8px",
+  borderRadius: "10px",
   color: customColors.info.contrastText,
   backgroundColor: customColors.green.main,
 

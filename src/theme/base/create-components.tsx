@@ -333,7 +333,7 @@ export const createComponents = (): Components => {
         root: {
           maxHeight: "250px",
           padding: "0",
-          borderRadius: "8px",
+          borderRadius: "10px",
         },
       },
     },
